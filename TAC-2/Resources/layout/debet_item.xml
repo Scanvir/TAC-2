@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+	android:background="#2f2f2f"
+	android:paddingTop="5dp"
+    android:paddingBottom="5dp">
+    <TextView
+        android:text="П-00000001"
+        android:textSize="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:paddingLeft="10dp"
+        android:textColor="#dfdfdf"
+        android:id="@+id/NumDoc" />
+    <TextView
+        android:text="01.01.21"
+        android:textSize="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingRight="10dp"
+        android:textAlignment="textEnd"
+        android:textColor="#dfdfdf"
+        android:id="@+id/DateDoc" />
+    <TextView
+        android:text="99 999.00"
+        android:textSize="20dp"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:paddingRight="10dp"
+        android:textAlignment="textEnd"
+        android:textColor="#dfdfdf"
+        android:id="@+id/Dolg" />
+</LinearLayout>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+      <item
+        android:id="@+id/nav_update"
+        android:icon="@drawable/ic_menu_manage"
+        android:title="Повне оновлення" />
+      <item
+        android:id="@+id/nav_export"
+        android:icon="@drawable/ic_menu_send"
+        android:title="Вигрузити документи" />
+      <item
+        android:id="@+id/nav_import"
+        android:icon="@drawable/ic_menu_receive"
+        android:title="Завантаження з архіва" />
+    </group>
+    <group android:checkableBehavior="single">
+      <item
+        android:id="@+id/nav_PKOJourn"
+        android:icon="@drawable/pko"
+        android:title="Журнал ПКО" />
+      <item
+        android:id="@+id/nav_OrderJourn"
+        android:icon="@drawable/zak"
+        android:title="Журнал Заказов" />
+    </group>
+</menu>

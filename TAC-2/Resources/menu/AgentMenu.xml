@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+  <group>
+    <item android:id="@+id/agent"
+      android:title="ПКО та Замовлення" />
+  </group>
+  <group>
+    <item android:id="@+id/detailing"
+      android:title="Тара та Обладнання" />
+  </group>
+</menu>

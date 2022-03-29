@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">TAC 0.8</string>
+    <string name="navigation_drawer_open">Відкрити меню</string>
+    <string name="navigation_drawer_close">Закрити меню</string>
+    <string name="action_settings">Налаштування</string>
+    <string name="action_exit">Закрити програму</string>
+</resources>

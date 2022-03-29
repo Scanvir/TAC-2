@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "809318920170",
+    "project_id": "tac-2-de3c8",
+    "storage_bucket": "tac-2-de3c8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:809318920170:android:835481212f27d489fd8c93",
+        "android_client_info": {
+          "package_name": "com.companyname.tac_2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "809318920170-g22dno77ucac8i4jd1r24l3l05d8lv3e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCbcq6D556revMw2CgvnLzLb53e0VXNhHQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "809318920170-g22dno77ucac8i4jd1r24l3l05d8lv3e.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

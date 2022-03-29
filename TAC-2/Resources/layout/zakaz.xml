@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:showIn="@layout/app_bar_main">
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appBarLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/ZakazToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+    </android.support.design.widget.AppBarLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#2f2f2f"
+        android:layout_below="@+id/appBarLayout1"
+        android:id="@+id/linearLayout"
+        android:gravity="bottom|center_horizontal">
+        <LinearLayout
+            android:orientation="vertical"
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.25"
+            android:background="#7b1fa2"
+            android:layout_below="@+id/appBarLayout1"
+            android:id="@+id/linearLayout">
+            <TextView
+                android:text="Заказ"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="5dp"
+                android:textStyle="bold"
+                android:textSize="20dp"
+                android:textAlignment="center"
+                android:textColor="#dfdfdf"/>
+            <Spinner
+                android:spinnerMode="dropdown"
+                android:id="@+id/dotZak"
+                android:layout_marginLeft="5.0dp"
+                android:paddingBottom="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="62dp"/>
+            <android.support.design.widget.CoordinatorLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fitsSystemWindows="false">
+                <ListView
+                    android:minWidth="25px"
+                    android:minHeight="25px"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#2f2f2f"
+                    android:id="@+id/listZak" />
+                <android.support.design.widget.FloatingActionButton
+                    android:id="@+id/fab"
+                    app:tint="#ffeb3b"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|end"
+                    android:layout_margin="@dimen/fab_margin"
+                    app:srcCompat="@android:drawable/ic_input_add" />
+            </android.support.design.widget.CoordinatorLayout>
+        </LinearLayout>
+        
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.76"
+            android:background="#7b1fa2"
+            android:layout_below="@+id/linearLayout"
+            android:id="@+id/linearLayout2"
+            android:gravity="bottom|center_horizontal">
+            <LinearLayout
+                android:orientation="horizontal"
+                android:minWidth="25px"
+                android:minHeight="25px"
+                android:gravity="center_horizontal|center_vertical"
+                android:layout_width="match_parent"
+                android:paddingBottom="10dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/linearLayout1">
+                <EditText
+                    android:hint="Комментар до заказу"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:maxLines="1"
+                    android:inputType="text"
+                    android:id="@+id/comment" />
+                <TextView
+                    android:gravity="center_horizontal|center_vertical"
+                    android:text="99 999.00"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:textSize="20dp"
+                    android:paddingRight="5dp"
+                    android:textStyle="bold"
+                    android:id="@+id/Summ" />
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:minWidth="25px"
+                android:minHeight="25px"
+                android:gravity="center_horizontal|center_vertical"
+                android:layout_width="match_parent"
+                android:paddingBottom="5dp"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:minWidth="25px"
+                        android:minHeight="25px"
+                        android:gravity="center_horizontal|center_vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <CheckBox
+                            android:text="+Ф"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginEnd="10dp"
+                            android:id="@+id/checkBoxF" />
+                        <CheckBox
+                            android:text="+А"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginEnd="10dp"
+                            android:id="@+id/checkBoxA" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:minWidth="25px"
+                        android:minHeight="25px"
+                        android:layout_marginEnd="10dp"
+                        android:gravity="center_horizontal|center_vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <RadioGroup
+                            android:minWidth="25px"
+                            android:minHeight="25px"
+                            android:gravity="center_horizontal|center_vertical"
+                            android:orientation="vertical"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/formGroup">
+                            <RadioButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:checked="true"
+                                android:text="Форма 1"
+                                android:id="@+id/form1" />
+                            <RadioButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Форма 2"
+                                android:id="@+id/form2" />
+                        </RadioGroup>
+                    </LinearLayout>
+                </LinearLayout>
+                <Button
+                    android:text="Видалити"
+                    android:layout_width="90.0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/btnZakazDelete"
+                    android:layout_weight="0"
+                    android:background="#700"
+                    android:layout_marginEnd="5dp"
+                    android:textColor="#ffeb3b"
+                    android:textStyle="bold" />
+                <Button
+                    android:text="Зберегти"
+                    android:layout_width="90.0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/btnZakazSave"
+                    android:layout_marginEnd="5dp"
+                    android:background="#ffeb3b"
+                    android:textColor="#000"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

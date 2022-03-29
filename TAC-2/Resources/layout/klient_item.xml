@@ -1,0 +1,47 @@
+﻿
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+	android:background="#2f2f2f"
+	android:paddingTop="5dp"
+    android:paddingBottom="5dp">
+    
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal|center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp"
+        android:background="@drawable/shape">
+        <TextView
+            android:text="Имя клиента когда длинное"
+            android:textSize="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:paddingLeft="5dp"
+            android:textColor="#dfdfdf"
+            android:id="@+id/KlientName" />
+        <TextView
+            android:text="999 999"
+            android:textSize="20dp"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:paddingRight="5dp"
+            android:textAlignment="textEnd"
+            android:textColor="#dfdfdf"
+            android:id="@+id/KlientDebet" />
+        <TextView
+            android:text="!"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:layout_width="10dp"
+            android:layout_height="wrap_content"
+            android:paddingRight="5dp"
+            android:textAlignment="textEnd"
+            android:textColor="@android:color/holo_red_light"
+            android:id="@+id/KlientWarn" />
+    </LinearLayout>
+</LinearLayout>

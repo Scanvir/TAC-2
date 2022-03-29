@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+	android:paddingTop="5dp"
+	android:background="#2f2f2f"
+    android:paddingBottom="5dp">
+    <TextView
+        android:text="Адрес точки"
+        android:textSize="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:textColor="#fff"
+        android:textStyle="bold"
+        android:id="@+id/DotAddress" />
+    <TextView
+        android:text="Название точки"
+        android:textSize="20dp"
+        android:layout_width="290dp"
+        android:layout_height="30dp"
+        android:paddingLeft="30dp"
+        android:textColor="#dfdfdf"
+        android:textStyle="italic"
+        android:layout_below="@+id/DotAddress"
+        android:id="@+id/DotName" />
+    <TextView
+        android:text="Код точки"
+        android:textSize="16dp"
+        android:gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:paddingEnd="10dp"
+        android:textColor="#dfdfdf"
+        android:textStyle="italic"
+        android:textAlignment="textEnd"
+        android:layout_below="@+id/DotAddress"
+        android:layout_toEndOf="@+id/DotName"
+        android:id="@+id/DotCode" />
+</RelativeLayout>

@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:showIn="@layout/app_bar_main">
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appBarLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbarPKOjourn"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+    </android.support.design.widget.AppBarLayout>
+    <LinearLayout
+        android:orientation="vertical"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#2f2f2f"
+        android:layout_below="@+id/appBarLayout1"
+        android:id="@+id/linearLayout"
+        android:gravity="bottom|center_horizontal">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.15"
+            android:background="#2f2f2f"
+            android:layout_below="@+id/tabLayout1"
+            android:id="@+id/linearLayout"
+            android:gravity="bottom|center_horizontal">
+            <ListView
+                android:minWidth="25px"
+                android:minHeight="25px"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/listPKOjourn" />
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#2f2f2f"
+            android:layout_below="@+id/tabLayout1"
+            android:id="@+id/linearLayout2"
+            android:gravity="bottom|center_horizontal">
+            <EditText
+                android:text="Оберіть дату..."
+                android:textSize="20dp"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                android:paddingLeft="10dp"
+                android:singleLine="true"
+                android:background="?attr/colorPrimary"
+                android:textColor="#fff"
+                android:textStyle="bold"
+                android:gravity="center_vertical"
+                android:id="@+id/datePKO" />
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+	android:background="#2f2f2f"
+	android:paddingTop="5dp"
+    android:paddingBottom="5dp">
+    <LinearLayout
+            android:paddingLeft="10dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        <TextView
+            android:text="KlientName"
+            android:textSize="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#dfdfdf"
+            android:id="@+id/Param1_1" />
+        <TextView
+            android:text="П-00000001"
+            android:paddingLeft="10dp"
+            android:textSize="16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#dfdfdf"
+            android:id="@+id/Param2_1" />
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <TextView
+                android:text="01.01.21"
+                android:textSize="20dp"
+                android:gravity="center_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="10dp"
+                android:textAlignment="textEnd"
+                android:textColor="#dfdfdf"
+                android:id="@+id/Param1_2" />
+            <TextView
+                android:text="01.01.21"
+                android:textSize="16dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="10dp"
+                android:textAlignment="textEnd"
+                android:textColor="#dfdfdf"
+                android:id="@+id/Param2_2" />
+        </LinearLayout>
+        <TextView
+            android:text="99 999.00"
+            android:textSize="20dp"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:paddingRight="10dp"
+            android:textAlignment="textEnd"
+            android:textColor="#dfdfdf"
+            android:id="@+id/Param1_3" />
+</LinearLayout>

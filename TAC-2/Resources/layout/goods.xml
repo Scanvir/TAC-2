@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:showIn="@layout/app_bar_main">
+    <TextView android:id="@+id/Directory" 
+        android:text="Каталог"
+        android:textSize="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_weight="1"
+        android:background="?attr/colorPrimary"
+        android:textColor="#fff"
+        android:gravity="center_vertical|center_horizontal"
+        android:onClick="OnClick"
+        android:clickable="true" />
+    <LinearLayout
+        android:orientation="vertical"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#2f2f2f"
+        android:layout_below="@+id/Directory"
+        android:id="@+id/linearLayout"
+        android:gravity="bottom|center_horizontal">
+        <ListView
+            android:layout_weight="0.11"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:indicatorLeft="?android:attr/expandableListPreferredItemIndicatorLeft"
+            android:divider="@android:color/darker_gray"
+            android:dividerHeight="1dp"
+            android:background="#2f2f2f"
+            android:id="@+id/listGoods" />
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#7b1fa2"
+            android:layout_below="@+id/linearLayout"
+            android:id="@+id/linearLayout2"
+            android:gravity="bottom|center_horizontal">
+            <EditText android:id="@+id/inputSearch"  
+                android:layout_width="match_parent"  
+                android:layout_height="40dp" 
+                android:paddingLeft="10dp"
+                android:layout_weight="1"
+                android:hint="Пошук..."
+                android:textSize="20dp"
+                android:textColor="#ffeb3b"
+                android:background="?attr/colorPrimary"
+                android:inputType="textVisiblePassword"/>
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

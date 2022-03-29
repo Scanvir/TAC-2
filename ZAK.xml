@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<pdf2xml pages="1">
+  <title>Aspose</title>
+  <page width="18" height="18">
+    <font size="8" face="BOVJFR+Arial" src="ZAK_font1.ttf">
+      <text x="1.022" y="12.143" width="15.202" height="9.163">ЗАК</text>
+    </font>
+  </page>
+</pdf2xml>
