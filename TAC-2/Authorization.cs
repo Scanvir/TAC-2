@@ -26,6 +26,8 @@ namespace TAC_2
         private string oldAuthCode;
         private TextView info;
 
+        private RadioGroup baseGroup;
+        
         private DBHelper db;
 
         protected override void OnCreate(Bundle savedInstanceState)
@@ -48,6 +50,14 @@ namespace TAC_2
             btnOk.Click += delegate {
                 BtnOkClick();
             };
+
+            baseGroup = FindViewById<RadioGroup>(Resource.Id.baseGroup);
+
+            if (auth.Base == 2) {
+                baseGroup.Check(Resource.Id.base2);
+            } else {
+                baseGroup.Check(Resource.Id.base1);
+            }
             
             var names = this.GetType().Assembly.GetManifestResourceNames();
 
@@ -59,6 +69,11 @@ namespace TAC_2
 
             if (ContextCompat.CheckSelfPermission(this, Manifest.Permission.Internet) != (int)Permission.Granted)
                ActivityCompat.RequestPermissions(this, new String[] { Manifest.Permission.Internet }, 1);
+
+        }
+        protected override void OnResume()
+        {
+            base.OnResume();
 
         }
         protected override void OnDestroy()
@@ -80,15 +95,20 @@ namespace TAC_2
 
             string serverIP;
 
-            if (await CrossConnectivity.Current.IsRemoteReachable("79.143.40.187"))
-                serverIP = "79.143.40.187";
-            else if (await CrossConnectivity.Current.IsRemoteReachable("212.113.44.30"))
-                serverIP = "212.113.44.30";
-            else
+            if (baseGroup.CheckedRadioButtonId == Resource.Id.base2) {
+                serverIP = "193.107.74.158";
+            } else
             {
-                info.Text = "немає зв`язку з сервером Psheni4niy";
-                error.Play();
-                return;
+                if (await CrossConnectivity.Current.IsRemoteReachable("79.143.40.187"))
+                    serverIP = "79.143.40.187";
+                else if (await CrossConnectivity.Current.IsRemoteReachable("212.113.44.30"))
+                    serverIP = "212.113.44.30";
+                else
+                {
+                    info.Text = "немає зв`язку з сервером Psheni4niy Вінниця";
+                    error.Play();
+                    return;
+                }
             }
             try
             {
@@ -96,6 +116,11 @@ namespace TAC_2
                 var response = await httpClient.GetStringAsync("http://" + serverIP + ":1221/?GetAuth=" + authCode.Text + "=" + AppInfo.Version.ToString());
 
                 Auth auth = JsonConvert.DeserializeObject<Auth>(response);
+
+                if (baseGroup.CheckedRadioButtonId == Resource.Id.base2)
+                    auth.Base = 2;
+                else
+                    auth.Base = 1;
 
                 if (auth.TAC == 1 && auth.Type >= 1)
                 {

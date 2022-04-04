@@ -15,7 +15,7 @@ namespace TAC_2
     {
         ICursor cursor;
         private new static string DatabaseName = "TAC-2";
-        private const int DatabaseVersion = 23;
+        private const int DatabaseVersion = 24;
         public DBHelper(Context context) : base(context, DatabaseName, null, DatabaseVersion) { }
         public override void OnCreate(SQLiteDatabase db)
         {
@@ -25,6 +25,7 @@ namespace TAC_2
                     Code            TEXT NOT NULL,
                     TAC             INTEGER NOT NULL,
                     Teh             INTEGER NOT NULL,
+                    Base            INTEGER NOT NULL,
                     Version         TEXT)");
             db.ExecSQL(@"CREATE TABLE IF NOT EXISTS Dot (
                     KlientCode      INTEGER NOT NULL,
@@ -353,6 +354,7 @@ namespace TAC_2
                 Values.Put("Code", auth.Code);
                 Values.Put("TAC", auth.TAC);
                 Values.Put("Teh", auth.Type);
+                Values.Put("Base", auth.Base);
                 Values.Put("Version", auth.Version);
                 db.Replace("Auth", null, Values);
             };
@@ -1230,14 +1232,15 @@ namespace TAC_2
             Auth auth = new Auth();
             using (SQLiteDatabase db = new DBHelper(context).ReadableDatabase)
             {
-                cursor = db.Query("Auth", new string[] { "Name", "Code", "TAC", "Teh", "Version" }, "ID" + "=?", new string[] { "1" }, null, null, null);
+                cursor = db.Query("Auth", new string[] { "Name", "Code", "TAC", "Teh", "Base", "Version" }, "ID" + "=?", new string[] { "1" }, null, null, null);
                 if (cursor != null && cursor.MoveToFirst() && cursor.Count > 0)
                 {
                     auth.Name = cursor.GetString(0);
                     auth.Code = cursor.GetString(1);
                     auth.TAC = cursor.GetInt(2);
                     auth.Type = cursor.GetInt(3);
-                    auth.Version = cursor.GetString(4);
+                    auth.Base= cursor.GetInt(4);
+                    auth.Version = cursor.GetString(5);
                 }
             }
             return auth;

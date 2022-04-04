@@ -8,6 +8,7 @@ namespace TAC_2
         public string Code;
         public int TAC;
         public int Type;
+        public int Base;
         public string Version;
     }
     public class TaraRest

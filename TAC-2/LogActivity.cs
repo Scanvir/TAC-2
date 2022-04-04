@@ -90,6 +90,8 @@ namespace TAC_2
 
                 Update update = JsonConvert.DeserializeObject<Update>(response);
 
+                update.Auth.Base = auth.Base;
+
                 if (update.Auth.TAC == 1 && update.Auth.Type >= 1)
                 {
                     log.Text += "Ви маєте доступ до програми\n";
@@ -137,6 +139,8 @@ namespace TAC_2
                 var response = await httpClient.GetStringAsync("http://" + serverIP + ":1221/?GetDocs=" + auth.Code + "=" + AppInfo.Version.ToString());
 
                 Update update = JsonConvert.DeserializeObject<Update>(response);
+
+                update.Auth.Base = auth.Base;
 
                 if (update.Auth.TAC == 1 && update.Auth.Type >= 1)
                 {
@@ -221,16 +225,24 @@ namespace TAC_2
                 return 0;
             }
 
-            if (await CrossConnectivity.Current.IsRemoteReachable("79.143.40.187"))
-                serverIP = "79.143.40.187";
-            else if (await CrossConnectivity.Current.IsRemoteReachable("212.113.44.30"))
-                serverIP = "212.113.44.30";
+            if (auth.Base == 2)
+            {
+                serverIP = "193.107.74.158";
+            }
             else
             {
-                log.Text += "IP адреса сервера не визначена!\n";
-                error.Play();
-                return 0;
+                if (await CrossConnectivity.Current.IsRemoteReachable("79.143.40.187"))
+                    serverIP = "79.143.40.187";
+                else if (await CrossConnectivity.Current.IsRemoteReachable("212.113.44.30"))
+                            serverIP = "212.113.44.30";
+                        else
+                        {
+                            log.Text += "IP адреса сервера не визначена!\n";
+                            error.Play();
+                            return 0;
+                        }
             }
+
             log.Text += "IP адреса сервера: " + serverIP + "\n";
             return 1;
         }

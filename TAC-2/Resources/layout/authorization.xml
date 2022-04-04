@@ -14,7 +14,37 @@
         android:minHeight="25px"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        
+        <LinearLayout
+        android:orientation="horizontal"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:gravity="center_horizontal|center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+            <RadioGroup
+                android:minWidth="25px"
+                android:minHeight="25px"
+                android:gravity="center_horizontal|center_vertical"
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/baseGroup">
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:checked="true"
+                    android:text="Вінниця"
+                    android:id="@+id/base1" />
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:textStyle="bold"
+                    android:text="Житомир"
+                    android:id="@+id/base2" />
+            </RadioGroup>
+            </LinearLayout>
         <EditText
             android:inputType="textVisiblePassword"
             android:layout_width="match_parent"
