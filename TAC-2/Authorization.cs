@@ -96,12 +96,19 @@ namespace TAC_2
             string serverIP;
 
             if (baseGroup.CheckedRadioButtonId == Resource.Id.base2) {
-                serverIP = "193.107.74.158";
+                if (await CrossConnectivity.Current.IsRemoteReachable("79.143.40.187", 1221))
+                    serverIP = "193.107.74.158";
+                else
+                {
+                    info.Text = "немає зв`язку з сервером Psheni4niy Житомир";
+                    error.Play();
+                    return;
+                }
             } else
             {
-                if (await CrossConnectivity.Current.IsRemoteReachable("79.143.40.187"))
+                if (await CrossConnectivity.Current.IsRemoteReachable("79.143.40.187", 1221))
                     serverIP = "79.143.40.187";
-                else if (await CrossConnectivity.Current.IsRemoteReachable("212.113.44.30"))
+                else if (await CrossConnectivity.Current.IsRemoteReachable("212.113.44.30", 1221))
                     serverIP = "212.113.44.30";
                 else
                 {

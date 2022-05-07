@@ -18,6 +18,7 @@ namespace TAC_2
             this.klientCode = klientCode;
         }
 
+
         public override int Count
         {
             get
