@@ -86,37 +86,36 @@ namespace TAC_2
         }
         private async void Auth()
         {
+            string serverIP = "";
             if (!CrossConnectivity.Current.IsConnected)
             {
-                info.Text = "немає інтернета";
+                info.Text = "Інтернет відсутній!\n";
                 error.Play();
                 return;
             }
 
-            string serverIP;
-
             if (baseGroup.CheckedRadioButtonId == Resource.Id.base2) {
-                if (await CrossConnectivity.Current.IsRemoteReachable("79.143.40.187", 1221))
-                    serverIP = "193.107.74.158";
+                if (await CrossConnectivity.Current.IsRemoteReachable("srv3.skalnyy.com", 1221))
+                    serverIP = "srv3.skalnyy.com";
                 else
                 {
                     info.Text = "немає зв`язку з сервером Psheni4niy Житомир";
                     error.Play();
                     return;
                 }
-            } else
-            {
-                if (await CrossConnectivity.Current.IsRemoteReachable("79.143.40.187", 1221))
-                    serverIP = "79.143.40.187";
-                else if (await CrossConnectivity.Current.IsRemoteReachable("212.113.44.30", 1221))
-                    serverIP = "212.113.44.30";
+            } else {
+                if (await CrossConnectivity.Current.IsRemoteReachable("srv1.skalnyy.com", 1221))
+                    serverIP = "srv1.skalnyy.com";
+                else if (await CrossConnectivity.Current.IsRemoteReachable("srv2.skalnyy.com", 1221))
+                    serverIP = "srv2.skalnyy.com";
                 else
                 {
-                    info.Text = "немає зв`язку з сервером Psheni4niy Вінниця";
+                    info.Text = "немає зв`язку з серверами Psheni4niy Вінниця";
                     error.Play();
                     return;
                 }
             }
+
             try
             {
                 var httpClient = new HttpClient();

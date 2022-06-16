@@ -225,22 +225,26 @@ namespace TAC_2
                 return 0;
             }
 
-            if (auth.Base == 2)
-            {
-                serverIP = "193.107.74.158";
-            }
-            else
-            {
-                if (await CrossConnectivity.Current.IsRemoteReachable("79.143.40.187"))
-                    serverIP = "79.143.40.187";
-                else if (await CrossConnectivity.Current.IsRemoteReachable("212.113.44.30"))
-                            serverIP = "212.113.44.30";
-                        else
-                        {
-                            log.Text += "IP адреса сервера не визначена!\n";
-                            error.Play();
-                            return 0;
-                        }
+            if (auth.Base == 2) {
+                if (await CrossConnectivity.Current.IsRemoteReachable("srv3.skalnyy.com", 1221))
+                    serverIP = "srv3.skalnyy.com";
+                else
+                {
+                    log.Text = "немає зв`язку з сервером Psheni4niy Житомир";
+                    error.Play();
+                    return 0;
+                }
+            } else {
+                if (await CrossConnectivity.Current.IsRemoteReachable("srv1.skalnyy.com", 1221))
+                    serverIP = "srv1.skalnyy.com";
+                else if (await CrossConnectivity.Current.IsRemoteReachable("srv2.skalnyy.com", 1221))
+                    serverIP = "srv2.skalnyy.com";
+                else
+                {
+                    log.Text = "немає зв`язку з серверами Psheni4niy Вінниця";
+                    error.Play();
+                    return 0;
+                }
             }
 
             log.Text += "IP адреса сервера: " + serverIP + "\n";
