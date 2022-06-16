@@ -17,6 +17,7 @@ namespace TAC_2
         private DBHelper db;
         private ListView lv;
         private ListGoodsDirectoryAdapter adapter;
+        private int dirCode;
 
         public void OnItemClick(AdapterView parent, View view, int position, long id)
         {
@@ -41,12 +42,21 @@ namespace TAC_2
             lv = FindViewById<ListView>(Resource.Id.myList);
             lv.FastScrollEnabled = true;
             lv.OnItemClickListener = this;
+
+            
         }
         protected override void OnResume()
         {
             base.OnResume();
             adapter = new ListGoodsDirectoryAdapter(db.GetGoodsDirectory(this), this);
             lv.Adapter = adapter;
+            
+            dirCode = Intent.GetIntExtra("dirCode", 0);
+
+            if (dirCode != 0)
+            {
+                lv.SetSelection(adapter.GetPosition(dirCode));
+            }
         }
     }
 }

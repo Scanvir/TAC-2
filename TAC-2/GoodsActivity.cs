@@ -19,6 +19,7 @@ namespace TAC_2
         private string GUID;
         private static long back_pressed;
         private int dirCode;
+        private string fillial;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -39,23 +40,24 @@ namespace TAC_2
             directory.SetOnClickListener(this);
 
             GUID = Intent.GetStringExtra("GUID");
+            fillial = Intent.GetStringExtra("fillial");
         }
         protected override void OnResume()
         {
             base.OnResume();
-            adapter = new ListGoodAdapter(this, db.GetPriceList(this, "", dirCode), GUID);
+            adapter = new ListGoodAdapter(this, db.GetPriceList(this, "", dirCode, fillial), GUID);
             lv.Adapter = adapter;
         }
         private void OnFilterTextChanged(object sender, TextChangedEventArgs e)
         {
             if (TextUtils.IsEmpty(inputSearch.Text))
             {
-                adapter = new ListGoodAdapter(this, db.GetPriceList(this, "", dirCode), GUID);
+                adapter = new ListGoodAdapter(this, db.GetPriceList(this, "", dirCode, fillial), GUID);
                 lv.Adapter = adapter;
             }
             else
             {
-                adapter = new ListGoodAdapter(this, db.GetPriceList(this, inputSearch.Text, dirCode), GUID);
+                adapter = new ListGoodAdapter(this, db.GetPriceList(this, inputSearch.Text, dirCode, fillial), GUID);
                 lv.Adapter = adapter;
             }
         }
@@ -113,6 +115,7 @@ namespace TAC_2
         public void OnClick(View v)
         {
             var intent = new Intent(this, type: typeof(DirectoryActivity));
+            intent.PutExtra("dirCode", dirCode);
             StartActivityForResult(intent, 100);
         }
         protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)

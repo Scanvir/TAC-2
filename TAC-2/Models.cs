@@ -55,6 +55,7 @@ namespace TAC_2
         public int DotCode { get; set; }
         public string DotName { get; set; }
         public string DotAddress { get; set; }
+        public string DotFillial { get; set; }
     }
     public class Price
     {
@@ -70,12 +71,13 @@ namespace TAC_2
         public int ParentID;
         public int Box;
         public string GoodView;
+        public double Price;
     }
     public class GoodRest
     {
         public int Code;
         public double Quantity;
-        public double Price;
+        public string Fillial;
     }
     public class GoodView
     {

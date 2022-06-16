@@ -15,7 +15,7 @@ namespace TAC_2
     {
         ICursor cursor;
         private new static string DatabaseName = "TAC-2";
-        private const int DatabaseVersion = 24;
+        private const int DatabaseVersion = 33;
         public DBHelper(Context context) : base(context, DatabaseName, null, DatabaseVersion) { }
         public override void OnCreate(SQLiteDatabase db)
         {
@@ -32,6 +32,7 @@ namespace TAC_2
                     DotCode         INTEGER NOT NULL,
                     DotName         TEXT NOT NULL,
                     DotAddress      TEXT NOT NULL,
+                    DotFillial      TEXT NOT NULL,
                     PRIMARY KEY (KlientCode, DotCode))");
             db.ExecSQL(@"CREATE TABLE IF NOT EXISTS Klient (
                     KlientCode      INTEGER PRIMARY KEY,
@@ -58,7 +59,8 @@ namespace TAC_2
                     Name            TEXT NOT NULL,
                     ParentID        INTEGER NOT NULL,
                     Box             INTEGER NOT NULL,
-                    GoodView        STRING NOT NULL)");
+                    GoodView        STRING NOT NULL,
+                    Price           REAL)");
             db.ExecSQL(@"CREATE TABLE IF NOT EXISTS GoodsDirectory (
                     Code            INT PRIMARY KEY,
                     Name            TEXT NOT NULL,
@@ -67,7 +69,7 @@ namespace TAC_2
             db.ExecSQL(@"CREATE TABLE IF NOT EXISTS GoodRest (
                     Code            INTEGER PRIMARY KEY,
                     Quantity        REAL,
-                    Price           REAL)");
+                    Fillial         TEXT NOT NULL)");
             db.ExecSQL(@"CREATE TABLE IF NOT EXISTS OborudRest (
                     OborudCode      TEXT NOT NULL,
                     KlientCode      INTEGER NOT NULL,
@@ -379,6 +381,7 @@ namespace TAC_2
                 Values.Put("DotCode", dot.DotCode);
                 Values.Put("DotName", dot.DotName);
                 Values.Put("DotAddress", dot.DotAddress);
+                Values.Put("DotFillial", dot.DotFillial);
                 db.Replace("Dot", null, Values);
             }
         }
@@ -394,7 +397,7 @@ namespace TAC_2
                 Values.Put("ParentID", good.ParentID);
                 Values.Put("Box", good.Box);
                 Values.Put("GoodView", good.GoodView);
-
+                Values.Put("Price", good.Price);
                 db.Insert("Good", null, Values);
             }
         }
@@ -430,7 +433,7 @@ namespace TAC_2
                 ContentValues Values = new ContentValues();
                 Values.Put("Code", goodRest.Code);
                 Values.Put("Quantity", goodRest.Quantity);
-                Values.Put("Price", goodRest.Price);
+                Values.Put("Fillial", goodRest.Fillial);
                 db.Insert("GoodRest", null, Values);
             }
         }
@@ -657,7 +660,7 @@ namespace TAC_2
             Dot dot = new Dot();
             using (SQLiteDatabase db = new DBHelper(context).ReadableDatabase)
             {
-                cursor = db.Query("Dot", new string[] { "DotCode", "DotName", "DotAddress" }, "KlientCode = " + klientCode, null, null, null, "DotName");
+                cursor = db.Query("Dot", new string[] { "DotCode", "DotName", "DotAddress", "DotFillial" }, "KlientCode = " + klientCode, null, null, null, "DotName");
                 if (cursor != null && cursor.MoveToFirst() && cursor.Count > 0)
                 {
                     for (int i = 0; i < cursor.Count; i++)
@@ -665,6 +668,7 @@ namespace TAC_2
                         dot.DotCode = int.Parse(cursor.GetString(0));
                         dot.DotName = cursor.GetString(1);
                         dot.DotAddress = cursor.GetString(2);
+                        dot.DotFillial = cursor.GetString(3);
                         cursor.MoveToNext();
                     }
                 }
@@ -1040,7 +1044,7 @@ namespace TAC_2
                     filter += " and (DotName like '%" + searchText + "%' or DotAddress like '%" + searchText + "%')";
                 }
 
-                cursor = db.Query("Dot", new string[] { "DotCode", "DotName", "DotAddress" }, "KlientCode = " + klientCode + filter, null, null, null, "DotAddress");
+                cursor = db.Query("Dot", new string[] { "DotCode", "DotName", "DotAddress", "DotFillial" }, "KlientCode = " + klientCode + filter, null, null, null, "DotAddress");
                 if (cursor != null && cursor.MoveToFirst() && cursor.Count > 0)
                 {
                     for (int i = 0; i < cursor.Count; i++)
@@ -1049,7 +1053,8 @@ namespace TAC_2
                         {
                             DotCode = int.Parse(cursor.GetString(0)),
                             DotName = cursor.GetString(1),
-                            DotAddress = cursor.GetString(2)
+                            DotAddress = cursor.GetString(2),
+                            DotFillial = cursor.GetString(3)
                         });
                         cursor.MoveToNext();
                     }
@@ -1164,7 +1169,7 @@ namespace TAC_2
             }
             return directory;
         }
-        public List<Price> GetPriceList(Context context, string searchText, int dirCode)
+        public List<Price> GetPriceList(Context context, string searchText, int dirCode, string fillial)
         {
             List<Price> prices = new List<Price>();
             using (SQLiteDatabase db = new DBHelper(context).ReadableDatabase)
@@ -1178,8 +1183,8 @@ namespace TAC_2
                 string dir = "";
                 if (dirCode != 0)
                     dir = " and ParentId = " + dirCode;
-
-                cursor = db.Query("Good as Good left join GoodRest as GoodRest on Good.Code = GoodRest.Code", new string[] { "Good.Code", "Good.Name", "GoodRest.Quantity", "GoodRest.Price" }, "1=1" + filter + dir, null, null, null, "Good.Name");
+                //and GoodRest.Fillial = " + fillial
+                cursor = db.Query("Good as Good left join GoodRest as GoodRest on Good.Code = GoodRest.Code and GoodRest.Fillial = '" + fillial + "'", new string[] { "Good.Code", "Good.Name", "GoodRest.Quantity", "Good.Price", "GoodRest.Fillial" }, "1 = 1" + filter + dir, null, null, null, "Good.Name");
 
                 if (cursor != null && cursor.MoveToFirst() && cursor.Count > 0)
                 {

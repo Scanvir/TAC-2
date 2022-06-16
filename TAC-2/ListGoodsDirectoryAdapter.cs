@@ -26,6 +26,10 @@ namespace TAC_2
         {
             return list[position].Code;
         }
+        public int GetPosition(int dotCode)
+        {
+            return list.FindIndex(X => X.Code == dotCode);
+        }
         public override View GetView(int position, View convertView, ViewGroup parent)
         {
             if (convertView == null)

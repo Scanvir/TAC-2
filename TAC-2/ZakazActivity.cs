@@ -18,6 +18,7 @@ namespace TAC_2
         private DBHelper db;
         private int klientCode;
         private int dotCode;
+        private string fillial;
         private Klient klient;
         private ListDotAdapter dotAdapter;
         private Spinner spinner;
@@ -37,6 +38,7 @@ namespace TAC_2
         private ListZakazTabAdapter adapter;
         private ListView lv;
 
+        
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -65,7 +67,9 @@ namespace TAC_2
             spinner.Adapter = dotAdapter;
             spinner.ItemSelected += (object sender, AdapterView.ItemSelectedEventArgs e) =>
             {
-                dotCode = dotAdapter.GetDot(e.Position).DotCode;
+                Dot dot = dotAdapter.GetDot(e.Position);
+                dotCode = dot.DotCode;
+                fillial = dot.DotFillial;
             };
             
             FloatingActionButton fab = FindViewById<FloatingActionButton>(Resource.Id.fab);
@@ -136,6 +140,7 @@ namespace TAC_2
         {
             var intent = new Intent(this, typeof(GoodsActivity));
             intent.PutExtra("GUID", GUID);
+            intent.PutExtra("fillial", fillial);
             StartActivityForResult(intent, 100);
         }
 
